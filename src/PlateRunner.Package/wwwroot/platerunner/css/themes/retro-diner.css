@@ -1,0 +1,542 @@
+/* ==========================================================================
+   PlateRunner — Retro Diner Theme
+   Playful, bold, nostalgic. Inspired by American diners of the 1950s–60s.
+   Scoped under .pr-theme--retro-diner to avoid collisions.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Custom properties
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner {
+    --rd-color-bg:           #FDF6E3;
+    --rd-color-surface:      #FFFFFF;
+    --rd-color-red:          #C0392B;
+    --rd-color-red-dark:     #96281B;
+    --rd-color-mustard:      #E8A020;
+    --rd-color-mustard-dark: #C07818;
+    --rd-color-text:         #1C1008;
+    --rd-color-text-muted:   #5A4A30;
+    --rd-color-border:       #D4C4A0;
+    --rd-color-check-a:      #C0392B;
+    --rd-color-check-b:      #FFFFFF;
+
+    --rd-font-display: Impact, 'Arial Narrow', 'Franklin Gothic Medium', Arial, sans-serif;
+    --rd-font-heading: 'Arial Black', 'Arial Bold', Gadget, sans-serif;
+    --rd-font-body:    Georgia, 'Times New Roman', serif;
+
+    --rd-space-xs:  0.5rem;
+    --rd-space-sm:  1rem;
+    --rd-space-md:  1.75rem;
+    --rd-space-lg:  3rem;
+    --rd-space-xl:  5rem;
+
+    --rd-max-width: 680px;
+    --rd-radius:    0px;
+    --rd-border:    3px solid var(--rd-color-red);
+}
+
+/* --------------------------------------------------------------------------
+   Reset / base
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner *,
+.pr-theme--retro-diner *::before,
+.pr-theme--retro-diner *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.pr-theme--retro-diner {
+    background-color: var(--rd-color-bg);
+    color: var(--rd-color-text);
+    font-family: var(--rd-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pr-theme--retro-diner a {
+    color: var(--rd-color-red);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.pr-theme--retro-diner a:hover,
+.pr-theme--retro-diner a:focus-visible {
+    color: var(--rd-color-red-dark);
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+.pr-theme--retro-diner address {
+    font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Page shell
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* --------------------------------------------------------------------------
+   Checkerboard stripe helper
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-header__stripe,
+.pr-theme--retro-diner .rd-footer__stripe {
+    height: 16px;
+    background-image:
+        repeating-linear-gradient(
+            90deg,
+            var(--rd-color-check-a) 0px,
+            var(--rd-color-check-a) 16px,
+            var(--rd-color-check-b) 16px,
+            var(--rd-color-check-b) 32px
+        );
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-header {
+    background-color: var(--rd-color-red);
+    text-align: center;
+}
+
+.pr-theme--retro-diner .rd-header__inner {
+    padding: var(--rd-space-lg) var(--rd-space-sm) var(--rd-space-md);
+}
+
+.pr-theme--retro-diner .rd-header__logo {
+    display: block;
+    margin: 0 auto var(--rd-space-sm);
+    max-height: 80px;
+    max-width: 200px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.pr-theme--retro-diner .rd-header__name {
+    font-family: var(--rd-font-display);
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    line-height: 1;
+    text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.25);
+}
+
+.pr-theme--retro-diner .rd-header__tagline {
+    margin-top: var(--rd-space-xs);
+    font-family: var(--rd-font-body);
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--rd-color-mustard);
+}
+
+/* --------------------------------------------------------------------------
+   Hero image
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-hero {
+    width: 100%;
+    max-height: 300px;
+    overflow: hidden;
+    border-bottom: var(--rd-border);
+}
+
+.pr-theme--retro-diner .rd-hero__image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Main content
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--rd-max-width);
+    margin: 0 auto;
+    padding: var(--rd-space-lg) var(--rd-space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--rd-space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Shared section heading — star-bordered diner style
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-section-heading {
+    font-family: var(--rd-font-heading);
+    font-size: 1.1rem;
+    font-weight: 900;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--rd-color-red);
+    text-align: center;
+    margin-bottom: var(--rd-space-md);
+    display: flex;
+    align-items: center;
+    gap: var(--rd-space-xs);
+    justify-content: center;
+}
+
+.pr-theme--retro-diner .rd-section-heading__deco {
+    color: var(--rd-color-mustard);
+    font-size: 0.8em;
+    flex-shrink: 0;
+}
+
+/* --------------------------------------------------------------------------
+   Announcements
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-announcement {
+    background-color: var(--rd-color-mustard);
+    border: var(--rd-border);
+    padding: var(--rd-space-md);
+    text-align: center;
+}
+
+.pr-theme--retro-diner .rd-announcement + .rd-announcement {
+    margin-top: var(--rd-space-sm);
+}
+
+.pr-theme--retro-diner .rd-announcement__title {
+    font-family: var(--rd-font-display);
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--rd-color-red);
+    line-height: 1.1;
+    margin-bottom: var(--rd-space-xs);
+}
+
+.pr-theme--retro-diner .rd-announcement__body {
+    font-size: 0.95rem;
+    color: var(--rd-color-text);
+    margin-bottom: var(--rd-space-sm);
+}
+
+.pr-theme--retro-diner .rd-announcement__cta {
+    display: inline-block;
+    background-color: var(--rd-color-red);
+    color: #FFFFFF !important;
+    font-family: var(--rd-font-heading);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0.5em 1.25em;
+    border: 2px solid var(--rd-color-red-dark);
+    text-decoration: none !important;
+}
+
+.pr-theme--retro-diner .rd-announcement__cta:hover,
+.pr-theme--retro-diner .rd-announcement__cta:focus-visible {
+    background-color: var(--rd-color-red-dark);
+    border-color: var(--rd-color-text);
+}
+
+/* --------------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-about__text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--rd-color-text-muted);
+    text-align: center;
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Menu — shared pr- classes, scoped to this theme
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .pr-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rd-space-lg);
+}
+
+.pr-theme--retro-diner .pr-menu__section-heading {
+    font-family: var(--rd-font-display);
+    font-size: 1.8rem;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rd-color-surface);
+    background-color: var(--rd-color-red);
+    padding: 0.3em 0.75em;
+    margin-bottom: var(--rd-space-md);
+    text-align: center;
+    text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.2);
+}
+
+.pr-theme--retro-diner .pr-menu__section-description {
+    font-size: 0.9rem;
+    color: var(--rd-color-text-muted);
+    font-style: italic;
+    text-align: center;
+    margin-bottom: var(--rd-space-md);
+    margin-top: calc(-1 * var(--rd-space-xs));
+}
+
+.pr-theme--retro-diner .pr-menu__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pr-theme--retro-diner .pr-menu__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: var(--rd-space-sm) 0;
+    border-bottom: 2px dashed var(--rd-color-border);
+    gap: var(--rd-space-sm);
+}
+
+.pr-theme--retro-diner .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+    grid-template-columns: 1fr 80px;
+    align-items: start;
+}
+
+.pr-theme--retro-diner .pr-menu__item:first-child {
+    padding-top: 0;
+}
+
+.pr-theme--retro-diner .pr-menu__item--unavailable {
+    opacity: 0.45;
+}
+
+.pr-theme--retro-diner .pr-menu__item-image-wrapper {
+    order: 2;
+}
+
+.pr-theme--retro-diner .pr-menu__item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    display: block;
+    border: 2px solid var(--rd-color-border);
+}
+
+.pr-theme--retro-diner .pr-menu__item-body {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pr-theme--retro-diner .pr-menu__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--rd-space-xs);
+}
+
+/* Dot-leader between name and price */
+.pr-theme--retro-diner .pr-menu__item-header::after {
+    content: '';
+    flex: 1;
+    border-bottom: 2px dotted var(--rd-color-border);
+    margin: 0 0.4em 0.2em;
+    align-self: flex-end;
+}
+
+.pr-theme--retro-diner .pr-menu__item-name {
+    font-family: var(--rd-font-heading);
+    font-size: 0.95rem;
+    font-weight: 900;
+    color: var(--rd-color-text);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.pr-theme--retro-diner .pr-menu__item-price {
+    font-family: var(--rd-font-heading);
+    font-size: 0.95rem;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+    color: var(--rd-color-red);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pr-theme--retro-diner .pr-menu__item-description {
+    font-size: 0.875rem;
+    color: var(--rd-color-text-muted);
+    line-height: 1.5;
+    font-style: italic;
+}
+
+.pr-theme--retro-diner .pr-menu__item-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+}
+
+.pr-theme--retro-diner .pr-menu__item-tag {
+    font-size: 0.65rem;
+    font-family: var(--rd-font-heading);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--rd-color-surface);
+    background-color: var(--rd-color-mustard-dark);
+    padding: 2px 6px;
+}
+
+.pr-theme--retro-diner .pr-menu__item-unavailable-notice {
+    font-size: 0.8rem;
+    color: var(--rd-color-red);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Opening hours
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-hours__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border: var(--rd-border);
+    padding: var(--rd-space-sm);
+    background-color: var(--rd-color-surface);
+}
+
+.pr-theme--retro-diner .rd-hours__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem var(--rd-space-xs);
+    font-size: 0.9rem;
+    border-bottom: 1px dashed var(--rd-color-border);
+}
+
+.pr-theme--retro-diner .rd-hours__row:last-child {
+    border-bottom: none;
+}
+
+.pr-theme--retro-diner .rd-hours__day {
+    font-family: var(--rd-font-heading);
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--rd-color-text);
+}
+
+.pr-theme--retro-diner .rd-hours__time {
+    color: var(--rd-color-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.pr-theme--retro-diner .rd-hours__closed {
+    color: var(--rd-color-red);
+    font-style: italic;
+    font-weight: bold;
+}
+
+.pr-theme--retro-diner .rd-hours__note {
+    font-size: 0.78rem;
+    color: var(--rd-color-text-muted);
+    font-style: italic;
+    padding: 0.2rem var(--rd-space-xs);
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--rd-space-xs);
+    font-size: 0.9rem;
+    color: var(--rd-color-text-muted);
+    text-align: center;
+}
+
+/* --------------------------------------------------------------------------
+   Social links
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-social__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--rd-space-xs);
+    list-style: none;
+    justify-content: center;
+}
+
+.pr-theme--retro-diner .rd-social__link {
+    display: inline-block;
+    font-family: var(--rd-font-heading);
+    font-size: 0.75rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--rd-color-red) !important;
+    border: 2px solid var(--rd-color-red);
+    padding: 0.3em 0.8em;
+    transition: background-color 0.15s, color 0.15s;
+}
+
+.pr-theme--retro-diner .rd-social__link:hover,
+.pr-theme--retro-diner .rd-social__link:focus-visible {
+    background-color: var(--rd-color-red);
+    color: #FFFFFF !important;
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.pr-theme--retro-diner .rd-footer {
+    background-color: var(--rd-color-text);
+    text-align: center;
+}
+
+.pr-theme--retro-diner .rd-footer__name {
+    font-family: var(--rd-font-display);
+    font-size: 1.4rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--rd-color-mustard);
+    padding: var(--rd-space-md) var(--rd-space-sm) var(--rd-space-xs);
+}
+
+.pr-theme--retro-diner .rd-footer__tagline {
+    font-size: 0.8rem;
+    font-style: italic;
+    color: var(--rd-color-border);
+    padding-bottom: var(--rd-space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — wider screens
+   -------------------------------------------------------------------------- */
+@media (min-width: 480px) {
+    .pr-theme--retro-diner .rd-hero {
+        max-height: 380px;
+    }
+
+    .pr-theme--retro-diner .rd-hero__image {
+        height: 380px;
+    }
+
+    .pr-theme--retro-diner .rd-main {
+        padding: var(--rd-space-xl) var(--rd-space-md);
+    }
+
+    .pr-theme--retro-diner .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+        grid-template-columns: 1fr 96px;
+    }
+
+    .pr-theme--retro-diner .pr-menu__item-image {
+        width: 96px;
+        height: 96px;
+    }
+}

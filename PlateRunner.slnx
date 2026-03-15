@@ -1,0 +1,11 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/PlateRunner.Package/PlateRunner.Package.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/PlateRunner.Package.Tests/PlateRunner.Package.Tests.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/UmbracoSampleSite/UmbracoSampleSite.csproj" />
+  </Folder>
+</Solution>

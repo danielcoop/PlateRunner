@@ -1,0 +1,212 @@
+@using PlateRunner.Package.ViewModels
+@model MicrositeViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@Model.Tagline" />
+    <title>@Model.BusinessName</title>
+    <link rel="stylesheet" href="@Model.Theme.StylesheetPath" />
+</head>
+<body class="pr-theme--retro-diner">
+
+    <div class="rd-page">
+
+        @* ── Header ──────────────────────────────────────────── *@
+        <header class="rd-header">
+            <div class="rd-header__stripe rd-header__stripe--top"></div>
+            <div class="rd-header__inner">
+                @if (!string.IsNullOrWhiteSpace(Model.LogoUrl))
+                {
+                    <img class="rd-header__logo"
+                         src="@Model.LogoUrl"
+                         alt="@Model.BusinessName logo" />
+                }
+                <h1 class="rd-header__name">@Model.BusinessName</h1>
+                @if (!string.IsNullOrWhiteSpace(Model.Tagline))
+                {
+                    <p class="rd-header__tagline">@Model.Tagline</p>
+                }
+            </div>
+            <div class="rd-header__stripe rd-header__stripe--bottom"></div>
+        </header>
+
+        @* ── Hero image ───────────────────────────────────────── *@
+        @if (!string.IsNullOrWhiteSpace(Model.HeroImageUrl))
+        {
+            <div class="rd-hero">
+                <img class="rd-hero__image"
+                     src="@Model.HeroImageUrl"
+                     alt="@Model.BusinessName"
+                     loading="eager" />
+            </div>
+        }
+
+        <main class="rd-main" id="main-content">
+
+            @* ── Announcements ────────────────────────────────── *@
+            @if (Model.Announcements is { Count: > 0 })
+            {
+                <section class="rd-announcements" aria-label="Announcements">
+                    @foreach (var announcement in Model.Announcements.Where(a => a.IsVisible))
+                    {
+                        <div class="rd-announcement">
+                            <h2 class="rd-announcement__title">@announcement.Title</h2>
+                            @if (!string.IsNullOrWhiteSpace(announcement.Body))
+                            {
+                                <div class="rd-announcement__body">@Html.Raw(announcement.Body)</div>
+                            }
+                            @if (announcement.HasCallToAction)
+                            {
+                                <a class="rd-announcement__cta"
+                                   href="@announcement.CallToActionUrl">
+                                    @announcement.CallToActionLabel
+                                </a>
+                            }
+                        </div>
+                    }
+                </section>
+            }
+
+            @* ── About / description ──────────────────────────── *@
+            @if (!string.IsNullOrWhiteSpace(Model.Description))
+            {
+                <section class="rd-about" aria-label="About">
+                    <div class="rd-about__text">@Html.Raw(Model.Description)</div>
+                </section>
+            }
+
+            @* ── Menu ─────────────────────────────────────────── *@
+            @if (Model.MenuSections is { Count: > 0 })
+            {
+                @await Html.PartialAsync("~/Views/Partials/PlateRunner/_Menu.cshtml", Model.MenuSections)
+            }
+
+            @* ── Opening hours ────────────────────────────────── *@
+            @if (Model.OpeningHours is { Count: > 0 })
+            {
+                <section class="rd-hours" aria-label="Opening hours">
+                    <h2 class="rd-section-heading">
+                        <span class="rd-section-heading__deco" aria-hidden="true">★</span>
+                        Hours
+                        <span class="rd-section-heading__deco" aria-hidden="true">★</span>
+                    </h2>
+                    <dl class="rd-hours__list">
+                        @foreach (var hour in Model.OpeningHours)
+                        {
+                            <div class="rd-hours__row">
+                                <dt class="rd-hours__day">@hour.Day</dt>
+                                <dd class="rd-hours__time">
+                                    @if (hour.IsClosed)
+                                    {
+                                        <span class="rd-hours__closed">Closed</span>
+                                    }
+                                    else
+                                    {
+                                        @hour.OpenTime<span class="rd-hours__separator" aria-hidden="true"> – </span>@hour.CloseTime
+                                    }
+                                </dd>
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(hour.Note))
+                            {
+                                <div class="rd-hours__note-row">
+                                    <dd class="rd-hours__note">@hour.Note</dd>
+                                </div>
+                            }
+                        }
+                    </dl>
+                </section>
+            }
+
+            @* ── Contact details ──────────────────────────────── *@
+            @if (Model.ContactDetails is { } contact)
+            {
+                <section class="rd-contact" aria-label="Contact">
+                    <h2 class="rd-section-heading">
+                        <span class="rd-section-heading__deco" aria-hidden="true">★</span>
+                        Find Us
+                        <span class="rd-section-heading__deco" aria-hidden="true">★</span>
+                    </h2>
+                    <address class="rd-contact__details">
+                        @if (contact.HasAddress)
+                        {
+                            <p class="rd-contact__address">
+                                @if (!string.IsNullOrWhiteSpace(contact.AddressLine1))
+                                {
+                                    <span>@contact.AddressLine1</span><br />
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.AddressLine2))
+                                {
+                                    <span>@contact.AddressLine2</span><br />
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.City))
+                                {
+                                    <span>@contact.City</span>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.Postcode))
+                                {
+                                    <span>&nbsp;@contact.Postcode</span>
+                                }
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.Phone))
+                        {
+                            <p class="rd-contact__phone">
+                                <a href="tel:@contact.Phone">@contact.Phone</a>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.Email))
+                        {
+                            <p class="rd-contact__email">
+                                <a href="mailto:@contact.Email">@contact.Email</a>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.WebsiteUrl))
+                        {
+                            <p class="rd-contact__website">
+                                <a href="@contact.WebsiteUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer">@contact.WebsiteUrl</a>
+                            </p>
+                        }
+                    </address>
+                </section>
+            }
+
+            @* ── Social links ─────────────────────────────────── *@
+            @if (Model.SocialLinks is { Count: > 0 })
+            {
+                <nav class="rd-social" aria-label="Social media">
+                    <ul class="rd-social__list" role="list">
+                        @foreach (var link in Model.SocialLinks)
+                        {
+                            <li class="rd-social__item">
+                                <a class="rd-social__link rd-social__link--@link.Platform"
+                                   href="@link.Url"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="@Model.BusinessName on @link.Platform">
+                                    @link.DisplayLabel
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+
+        </main>
+
+        <footer class="rd-footer">
+            <div class="rd-footer__stripe"></div>
+            <p class="rd-footer__name">@Model.BusinessName</p>
+            <p class="rd-footer__tagline">Est. Good Times</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

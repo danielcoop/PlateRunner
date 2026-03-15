@@ -1,0 +1,16 @@
+@using PlateRunner.Package.ViewModels
+@model IReadOnlyList<MenuSectionViewModel>
+
+@* Entry-point partial. Pass Model from the theme view:
+   @await Html.PartialAsync("~/Views/Partials/PlateRunner/_Menu.cshtml", Model.MenuSections)
+*@
+
+@if (Model is { Count: > 0 })
+{
+    <section class="pr-menu" aria-label="Menu">
+        @foreach (var section in Model)
+        {
+            @await Html.PartialAsync("~/Views/Partials/PlateRunner/_MenuSection.cshtml", section)
+        }
+    </section>
+}

@@ -1,0 +1,215 @@
+@using PlateRunner.Package.ViewModels
+@model MicrositeViewModel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="@Model.Tagline" />
+    <title>@Model.BusinessName</title>
+    <link rel="stylesheet" href="@Model.Theme.StylesheetPath" />
+</head>
+<body class="pr-theme--fiesta-street">
+
+    <div class="fs-page">
+
+        @* ── Header ──────────────────────────────────────────── *@
+        <header class="fs-header">
+            <div class="fs-header__bunting" aria-hidden="true">
+                <span class="fs-bunting__flag fs-bunting__flag--1"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--2"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--3"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--4"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--5"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--6"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--1"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--2"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--3"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--4"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--5"></span>
+                <span class="fs-bunting__flag fs-bunting__flag--6"></span>
+            </div>
+            <div class="fs-header__inner">
+                @if (!string.IsNullOrWhiteSpace(Model.LogoUrl))
+                {
+                    <img class="fs-header__logo"
+                         src="@Model.LogoUrl"
+                         alt="@Model.BusinessName logo" />
+                }
+                <h1 class="fs-header__name">@Model.BusinessName</h1>
+                @if (!string.IsNullOrWhiteSpace(Model.Tagline))
+                {
+                    <p class="fs-header__tagline">@Model.Tagline</p>
+                }
+            </div>
+        </header>
+
+        @* ── Hero image ───────────────────────────────────────── *@
+        @if (!string.IsNullOrWhiteSpace(Model.HeroImageUrl))
+        {
+            <div class="fs-hero">
+                <img class="fs-hero__image"
+                     src="@Model.HeroImageUrl"
+                     alt="@Model.BusinessName"
+                     loading="eager" />
+            </div>
+        }
+
+        <main class="fs-main" id="main-content">
+
+            @* ── Announcements ────────────────────────────────── *@
+            @if (Model.Announcements is { Count: > 0 })
+            {
+                <section class="fs-announcements" aria-label="Announcements">
+                    @foreach (var announcement in Model.Announcements.Where(a => a.IsVisible))
+                    {
+                        <div class="fs-announcement">
+                            <h2 class="fs-announcement__title">@announcement.Title</h2>
+                            @if (!string.IsNullOrWhiteSpace(announcement.Body))
+                            {
+                                <div class="fs-announcement__body">@Html.Raw(announcement.Body)</div>
+                            }
+                            @if (announcement.HasCallToAction)
+                            {
+                                <a class="fs-announcement__cta"
+                                   href="@announcement.CallToActionUrl">
+                                    @announcement.CallToActionLabel
+                                </a>
+                            }
+                        </div>
+                    }
+                </section>
+            }
+
+            @* ── About / description ──────────────────────────── *@
+            @if (!string.IsNullOrWhiteSpace(Model.Description))
+            {
+                <section class="fs-about" aria-label="About">
+                    <div class="fs-about__text">@Html.Raw(Model.Description)</div>
+                </section>
+            }
+
+            @* ── Menu ─────────────────────────────────────────── *@
+            @if (Model.MenuSections is { Count: > 0 })
+            {
+                @await Html.PartialAsync("~/Views/Partials/PlateRunner/_Menu.cshtml", Model.MenuSections)
+            }
+
+            @* ── Opening hours ────────────────────────────────── *@
+            @if (Model.OpeningHours is { Count: > 0 })
+            {
+                <section class="fs-hours" aria-label="Opening hours">
+                    <h2 class="fs-section-heading">🕐 Hours</h2>
+                    <dl class="fs-hours__list">
+                        @foreach (var hour in Model.OpeningHours)
+                        {
+                            <div class="fs-hours__row">
+                                <dt class="fs-hours__day">@hour.Day</dt>
+                                <dd class="fs-hours__time">
+                                    @if (hour.IsClosed)
+                                    {
+                                        <span class="fs-hours__closed">Closed</span>
+                                    }
+                                    else
+                                    {
+                                        @hour.OpenTime<span class="fs-hours__separator" aria-hidden="true"> – </span>@hour.CloseTime
+                                    }
+                                </dd>
+                            </div>
+                            @if (!string.IsNullOrWhiteSpace(hour.Note))
+                            {
+                                <div class="fs-hours__note-row">
+                                    <dd class="fs-hours__note">@hour.Note</dd>
+                                </div>
+                            }
+                        }
+                    </dl>
+                </section>
+            }
+
+            @* ── Contact details ──────────────────────────────── *@
+            @if (Model.ContactDetails is { } contact)
+            {
+                <section class="fs-contact" aria-label="Contact">
+                    <h2 class="fs-section-heading">📍 Find Us</h2>
+                    <address class="fs-contact__details">
+                        @if (contact.HasAddress)
+                        {
+                            <p class="fs-contact__address">
+                                @if (!string.IsNullOrWhiteSpace(contact.AddressLine1))
+                                {
+                                    <span>@contact.AddressLine1</span><br />
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.AddressLine2))
+                                {
+                                    <span>@contact.AddressLine2</span><br />
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.City))
+                                {
+                                    <span>@contact.City</span>
+                                }
+                                @if (!string.IsNullOrWhiteSpace(contact.Postcode))
+                                {
+                                    <span>&nbsp;@contact.Postcode</span>
+                                }
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.Phone))
+                        {
+                            <p class="fs-contact__phone">
+                                <a href="tel:@contact.Phone">📞 @contact.Phone</a>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.Email))
+                        {
+                            <p class="fs-contact__email">
+                                <a href="mailto:@contact.Email">✉️ @contact.Email</a>
+                            </p>
+                        }
+                        @if (!string.IsNullOrWhiteSpace(contact.WebsiteUrl))
+                        {
+                            <p class="fs-contact__website">
+                                <a href="@contact.WebsiteUrl"
+                                   target="_blank"
+                                   rel="noopener noreferrer">🌐 @contact.WebsiteUrl</a>
+                            </p>
+                        }
+                    </address>
+                </section>
+            }
+
+            @* ── Social links ─────────────────────────────────── *@
+            @if (Model.SocialLinks is { Count: > 0 })
+            {
+                <nav class="fs-social" aria-label="Social media">
+                    <ul class="fs-social__list" role="list">
+                        @foreach (var link in Model.SocialLinks)
+                        {
+                            <li class="fs-social__item">
+                                <a class="fs-social__link fs-social__link--@link.Platform"
+                                   href="@link.Url"
+                                   target="_blank"
+                                   rel="noopener noreferrer"
+                                   aria-label="@Model.BusinessName on @link.Platform">
+                                    @link.DisplayLabel
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </nav>
+            }
+
+        </main>
+
+        <footer class="fs-footer">
+            <p class="fs-footer__name">@Model.BusinessName</p>
+            <p class="fs-footer__emoji" aria-hidden="true">🌶️ 🎉 🌮</p>
+        </footer>
+
+    </div>
+
+</body>
+</html>

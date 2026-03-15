@@ -1,0 +1,457 @@
+/* ==========================================================================
+   PlateRunner — Minimal Elegant Theme
+   Mobile-first, clean, modern, premium.
+   Scoped under .pr-theme--minimal-elegant to avoid collisions.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Custom properties
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant {
+    --me-color-bg:          #FAFAF8;
+    --me-color-surface:     #FFFFFF;
+    --me-color-text:        #1A1A1A;
+    --me-color-text-muted:  #6B6B6B;
+    --me-color-accent:      #B8956A;
+    --me-color-accent-dark: #96784F;
+    --me-color-border:      #E8E4DE;
+
+    --me-font-heading:  Georgia, 'Times New Roman', serif;
+    --me-font-body:     'Helvetica Neue', Arial, sans-serif;
+
+    --me-space-xs:   0.5rem;
+    --me-space-sm:   1rem;
+    --me-space-md:   1.75rem;
+    --me-space-lg:   3rem;
+    --me-space-xl:   5rem;
+
+    --me-max-width:  680px;
+    --me-radius:     4px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset / base
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant *,
+.pr-theme--minimal-elegant *::before,
+.pr-theme--minimal-elegant *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.pr-theme--minimal-elegant {
+    background-color: var(--me-color-bg);
+    color: var(--me-color-text);
+    font-family: var(--me-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pr-theme--minimal-elegant a {
+    color: var(--me-color-accent);
+    text-decoration: none;
+}
+
+.pr-theme--minimal-elegant a:hover,
+.pr-theme--minimal-elegant a:focus-visible {
+    color: var(--me-color-accent-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.pr-theme--minimal-elegant address {
+    font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Page shell
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-header {
+    text-align: center;
+    padding: var(--me-space-lg) var(--me-space-sm) var(--me-space-md);
+    border-bottom: 1px solid var(--me-color-border);
+    background-color: var(--me-color-surface);
+}
+
+.pr-theme--minimal-elegant .me-header__logo {
+    display: block;
+    margin: 0 auto var(--me-space-sm);
+    max-height: 72px;
+    max-width: 200px;
+    object-fit: contain;
+}
+
+.pr-theme--minimal-elegant .me-header__name {
+    font-family: var(--me-font-heading);
+    font-size: clamp(1.75rem, 5vw, 2.5rem);
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    line-height: 1.2;
+    color: var(--me-color-text);
+}
+
+.pr-theme--minimal-elegant .me-header__tagline {
+    margin-top: var(--me-space-xs);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Hero image
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-hero {
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.pr-theme--minimal-elegant .me-hero__image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Main content — centred column
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--me-max-width);
+    margin: 0 auto;
+    padding: var(--me-space-lg) var(--me-space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--me-space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Shared section heading
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-section-heading {
+    font-family: var(--me-font-heading);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+    padding-bottom: var(--me-space-xs);
+    border-bottom: 1px solid var(--me-color-border);
+    margin-bottom: var(--me-space-md);
+}
+
+/* --------------------------------------------------------------------------
+   Announcements
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-announcement {
+    background-color: var(--me-color-surface);
+    border: 1px solid var(--me-color-border);
+    border-left: 3px solid var(--me-color-accent);
+    border-radius: var(--me-radius);
+    padding: var(--me-space-md);
+}
+
+.pr-theme--minimal-elegant .me-announcement + .me-announcement {
+    margin-top: var(--me-space-sm);
+}
+
+.pr-theme--minimal-elegant .me-announcement__title {
+    font-family: var(--me-font-heading);
+    font-size: 1.15rem;
+    font-weight: 400;
+    margin-bottom: var(--me-space-xs);
+}
+
+.pr-theme--minimal-elegant .me-announcement__body {
+    font-size: 0.95rem;
+    color: var(--me-color-text-muted);
+    margin-bottom: var(--me-space-sm);
+}
+
+.pr-theme--minimal-elegant .me-announcement__cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--me-color-accent);
+    border-bottom: 1px solid var(--me-color-accent);
+    padding-bottom: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-about__text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--me-color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Menu — shared pr- classes, scoped to this theme
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .pr-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--me-space-lg);
+}
+
+.pr-theme--minimal-elegant .pr-menu__section-heading {
+    font-family: var(--me-font-heading);
+    font-size: 1.1rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+    padding-bottom: var(--me-space-xs);
+    border-bottom: 1px solid var(--me-color-border);
+    margin-bottom: var(--me-space-md);
+}
+
+.pr-theme--minimal-elegant .pr-menu__section-description {
+    font-size: 0.9rem;
+    color: var(--me-color-text-muted);
+    margin-bottom: var(--me-space-md);
+    margin-top: calc(-1 * var(--me-space-xs));
+}
+
+.pr-theme--minimal-elegant .pr-menu__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: var(--me-space-md) 0;
+    border-bottom: 1px solid var(--me-color-border);
+    gap: var(--me-space-sm);
+}
+
+/* Side image layout when an image is present */
+.pr-theme--minimal-elegant .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+    grid-template-columns: 1fr 80px;
+    align-items: start;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item:first-child {
+    padding-top: 0;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item--unavailable {
+    opacity: 0.5;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-image-wrapper {
+    order: 2;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--me-radius);
+    display: block;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-body {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--me-space-xs);
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--me-space-sm);
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-name {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--me-color-text);
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-price {
+    font-size: 0.95rem;
+    font-variant-numeric: tabular-nums;
+    color: var(--me-color-accent);
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-description {
+    font-size: 0.875rem;
+    color: var(--me-color-text-muted);
+    line-height: 1.55;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--me-space-xs);
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+    border: 1px solid var(--me-color-border);
+    border-radius: 2px;
+    padding: 2px 6px;
+}
+
+.pr-theme--minimal-elegant .pr-menu__item-unavailable-notice {
+    font-size: 0.8rem;
+    color: var(--me-color-text-muted);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Opening hours
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-hours__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.pr-theme--minimal-elegant .me-hours__row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--me-space-xs) 0;
+    border-bottom: 1px solid var(--me-color-border);
+    font-size: 0.9rem;
+}
+
+.pr-theme--minimal-elegant .me-hours__day {
+    color: var(--me-color-text);
+    font-weight: 500;
+}
+
+.pr-theme--minimal-elegant .me-hours__time {
+    color: var(--me-color-text-muted);
+}
+
+.pr-theme--minimal-elegant .me-hours__separator {
+    margin: 0 0.2em;
+}
+
+.pr-theme--minimal-elegant .me-hours__closed {
+    color: var(--me-color-text-muted);
+    font-style: italic;
+}
+
+.pr-theme--minimal-elegant .me-hours__note-row {
+    padding-bottom: var(--me-space-xs);
+}
+
+.pr-theme--minimal-elegant .me-hours__note {
+    font-size: 0.8rem;
+    color: var(--me-color-text-muted);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--me-space-xs);
+    font-size: 0.9rem;
+    color: var(--me-color-text-muted);
+}
+
+.pr-theme--minimal-elegant .me-contact__details a {
+    color: var(--me-color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   Social links
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-social__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--me-space-sm);
+    list-style: none;
+}
+
+.pr-theme--minimal-elegant .me-social__link {
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+    border-bottom: 1px solid transparent;
+    transition: color 0.15s, border-color 0.15s;
+}
+
+.pr-theme--minimal-elegant .me-social__link:hover,
+.pr-theme--minimal-elegant .me-social__link:focus-visible {
+    color: var(--me-color-accent);
+    border-color: var(--me-color-accent);
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.pr-theme--minimal-elegant .me-footer {
+    text-align: center;
+    padding: var(--me-space-md) var(--me-space-sm);
+    border-top: 1px solid var(--me-color-border);
+    background-color: var(--me-color-surface);
+}
+
+.pr-theme--minimal-elegant .me-footer__name {
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--me-color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — wider screens
+   -------------------------------------------------------------------------- */
+@media (min-width: 480px) {
+    .pr-theme--minimal-elegant .me-hero {
+        max-height: 420px;
+    }
+
+    .pr-theme--minimal-elegant .me-hero__image {
+        height: 420px;
+    }
+
+    .pr-theme--minimal-elegant .me-main {
+        padding: var(--me-space-xl) var(--me-space-md);
+    }
+
+    .pr-theme--minimal-elegant .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+        grid-template-columns: 1fr 96px;
+    }
+
+    .pr-theme--minimal-elegant .pr-menu__item-image {
+        width: 96px;
+        height: 96px;
+    }
+}

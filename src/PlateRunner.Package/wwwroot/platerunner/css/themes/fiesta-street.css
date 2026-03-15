@@ -1,0 +1,547 @@
+/* ==========================================================================
+   PlateRunner — Fiesta Street Theme
+   Warm, vibrant, energetic. Street food festival energy.
+   Scoped under .pr-theme--fiesta-street to avoid collisions.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Custom properties
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street {
+    --fs-color-bg:           #FFF8F0;
+    --fs-color-surface:      #FFFFFF;
+    --fs-color-orange:       #F4511E;
+    --fs-color-orange-dark:  #C93D12;
+    --fs-color-yellow:       #FFC107;
+    --fs-color-yellow-dark:  #E6A800;
+    --fs-color-magenta:      #D81B60;
+    --fs-color-teal:         #00897B;
+    --fs-color-purple:       #6A1B9A;
+    --fs-color-text:         #1A0A00;
+    --fs-color-text-muted:   #5C3D1E;
+    --fs-color-border:       #F0D9C0;
+
+    --fs-font-heading: 'Trebuchet MS', 'Segoe UI', Arial, sans-serif;
+    --fs-font-body:    'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+
+    --fs-space-xs:  0.5rem;
+    --fs-space-sm:  1rem;
+    --fs-space-md:  1.75rem;
+    --fs-space-lg:  3rem;
+    --fs-space-xl:  5rem;
+
+    --fs-max-width: 680px;
+    --fs-radius:    12px;
+    --fs-radius-sm: 6px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset / base
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street *,
+.pr-theme--fiesta-street *::before,
+.pr-theme--fiesta-street *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.pr-theme--fiesta-street {
+    background-color: var(--fs-color-bg);
+    color: var(--fs-color-text);
+    font-family: var(--fs-font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+
+.pr-theme--fiesta-street a {
+    color: var(--fs-color-orange);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.pr-theme--fiesta-street a:hover,
+.pr-theme--fiesta-street a:focus-visible {
+    color: var(--fs-color-orange-dark);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.pr-theme--fiesta-street address {
+    font-style: normal;
+}
+
+/* --------------------------------------------------------------------------
+   Page shell
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100dvh;
+}
+
+/* --------------------------------------------------------------------------
+   Bunting / papel picado decoration
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-header__bunting {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    padding: 0 var(--fs-space-xs);
+    height: 32px;
+    background-color: var(--fs-color-orange);
+    overflow: hidden;
+}
+
+.pr-theme--fiesta-street .fs-bunting__flag {
+    display: block;
+    width: 28px;
+    height: 22px;
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+    flex-shrink: 0;
+}
+
+.pr-theme--fiesta-street .fs-bunting__flag--1 { background-color: var(--fs-color-yellow); }
+.pr-theme--fiesta-street .fs-bunting__flag--2 { background-color: var(--fs-color-magenta); }
+.pr-theme--fiesta-street .fs-bunting__flag--3 { background-color: #FFFFFF; }
+.pr-theme--fiesta-street .fs-bunting__flag--4 { background-color: var(--fs-color-teal); }
+.pr-theme--fiesta-street .fs-bunting__flag--5 { background-color: var(--fs-color-purple); }
+.pr-theme--fiesta-street .fs-bunting__flag--6 { background-color: var(--fs-color-yellow); }
+
+/* --------------------------------------------------------------------------
+   Header
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-header {
+    background: linear-gradient(
+        160deg,
+        var(--fs-color-orange) 0%,
+        #E64A19 60%,
+        var(--fs-color-magenta) 100%
+    );
+    text-align: center;
+}
+
+.pr-theme--fiesta-street .fs-header__inner {
+    padding: var(--fs-space-md) var(--fs-space-sm) var(--fs-space-lg);
+}
+
+.pr-theme--fiesta-street .fs-header__logo {
+    display: block;
+    margin: 0 auto var(--fs-space-sm);
+    max-height: 80px;
+    max-width: 200px;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.pr-theme--fiesta-street .fs-header__name {
+    font-family: var(--fs-font-heading);
+    font-size: clamp(2rem, 7vw, 3.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    color: #FFFFFF;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+}
+
+.pr-theme--fiesta-street .fs-header__tagline {
+    margin-top: var(--fs-space-xs);
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--fs-color-yellow);
+    text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------------------------------------------------------------------
+   Hero image
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-hero {
+    width: 100%;
+    max-height: 320px;
+    overflow: hidden;
+}
+
+.pr-theme--fiesta-street .fs-hero__image {
+    width: 100%;
+    height: 320px;
+    object-fit: cover;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   Main content
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-main {
+    flex: 1;
+    width: 100%;
+    max-width: var(--fs-max-width);
+    margin: 0 auto;
+    padding: var(--fs-space-lg) var(--fs-space-sm);
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-space-lg);
+}
+
+/* --------------------------------------------------------------------------
+   Shared section heading
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-section-heading {
+    font-family: var(--fs-font-heading);
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--fs-color-orange);
+    margin-bottom: var(--fs-space-md);
+    padding-bottom: var(--fs-space-xs);
+    border-bottom: 3px solid var(--fs-color-yellow);
+}
+
+/* --------------------------------------------------------------------------
+   Announcements
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-announcement {
+    background: linear-gradient(135deg, var(--fs-color-yellow) 0%, #FFD54F 100%);
+    border-radius: var(--fs-radius);
+    padding: var(--fs-space-md);
+    box-shadow: 0 4px 16px rgba(244, 81, 30, 0.2);
+}
+
+.pr-theme--fiesta-street .fs-announcement + .fs-announcement {
+    margin-top: var(--fs-space-sm);
+}
+
+.pr-theme--fiesta-street .fs-announcement__title {
+    font-family: var(--fs-font-heading);
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--fs-color-orange-dark);
+    margin-bottom: var(--fs-space-xs);
+    line-height: 1.2;
+}
+
+.pr-theme--fiesta-street .fs-announcement__body {
+    font-size: 0.95rem;
+    color: var(--fs-color-text);
+    margin-bottom: var(--fs-space-sm);
+}
+
+.pr-theme--fiesta-street .fs-announcement__cta {
+    display: inline-block;
+    background-color: var(--fs-color-orange);
+    color: #FFFFFF !important;
+    font-family: var(--fs-font-heading);
+    font-size: 0.9rem;
+    font-weight: 700;
+    padding: 0.5em 1.4em;
+    border-radius: 999px;
+    text-decoration: none !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    transition: background-color 0.15s, transform 0.1s;
+}
+
+.pr-theme--fiesta-street .fs-announcement__cta:hover,
+.pr-theme--fiesta-street .fs-announcement__cta:focus-visible {
+    background-color: var(--fs-color-orange-dark);
+    transform: translateY(-1px);
+    text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   About
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-about__text {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: var(--fs-color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   Menu — shared pr- classes, scoped to this theme
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .pr-menu {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-space-lg);
+}
+
+.pr-theme--fiesta-street .pr-menu__section-heading {
+    font-family: var(--fs-font-heading);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    background: linear-gradient(90deg, var(--fs-color-orange) 0%, var(--fs-color-magenta) 100%);
+    padding: 0.45em 1em;
+    border-radius: var(--fs-radius-sm);
+    margin-bottom: var(--fs-space-md);
+    box-shadow: 0 2px 8px rgba(244, 81, 30, 0.25);
+}
+
+.pr-theme--fiesta-street .pr-menu__section-description {
+    font-size: 0.9rem;
+    color: var(--fs-color-text-muted);
+    margin-bottom: var(--fs-space-md);
+    margin-top: calc(-1 * var(--fs-space-xs));
+}
+
+.pr-theme--fiesta-street .pr-menu__items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-space-sm);
+}
+
+.pr-theme--fiesta-street .pr-menu__item {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--fs-color-surface);
+    border-radius: var(--fs-radius);
+    padding: var(--fs-space-sm);
+    gap: var(--fs-space-sm);
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.07);
+    border: 1px solid var(--fs-color-border);
+    transition: box-shadow 0.15s;
+}
+
+.pr-theme--fiesta-street .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+    grid-template-columns: 1fr 80px;
+    align-items: start;
+}
+
+.pr-theme--fiesta-street .pr-menu__item:focus-within,
+.pr-theme--fiesta-street .pr-menu__item:hover {
+    box-shadow: 0 4px 16px rgba(244, 81, 30, 0.12);
+}
+
+.pr-theme--fiesta-street .pr-menu__item--unavailable {
+    opacity: 0.5;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-image-wrapper {
+    order: 2;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: var(--fs-radius-sm);
+    display: block;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-body {
+    order: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--fs-space-xs);
+    flex-wrap: wrap;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-name {
+    font-family: var(--fs-font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--fs-color-text);
+    line-height: 1.3;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-price {
+    font-family: var(--fs-font-heading);
+    font-size: 1rem;
+    font-weight: 700;
+    font-variant-numeric: tabular-nums;
+    color: var(--fs-color-orange);
+    white-space: nowrap;
+    flex-shrink: 0;
+    background-color: #FFF3E0;
+    padding: 0.1em 0.5em;
+    border-radius: 999px;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-description {
+    font-size: 0.875rem;
+    color: var(--fs-color-text-muted);
+    line-height: 1.55;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-tags {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.3rem;
+    margin-top: 0.2rem;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-tag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: var(--fs-color-teal);
+    background-color: #E0F2F1;
+    border-radius: 999px;
+    padding: 2px 8px;
+}
+
+.pr-theme--fiesta-street .pr-menu__item-unavailable-notice {
+    font-size: 0.8rem;
+    color: var(--fs-color-magenta);
+    font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   Opening hours
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-hours__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: var(--fs-radius);
+    overflow: hidden;
+    border: 1px solid var(--fs-color-border);
+}
+
+.pr-theme--fiesta-street .fs-hours__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.6rem var(--fs-space-sm);
+    font-size: 0.9rem;
+    background-color: var(--fs-color-surface);
+    border-bottom: 1px solid var(--fs-color-border);
+}
+
+.pr-theme--fiesta-street .fs-hours__row:nth-child(odd) {
+    background-color: #FFF8F0;
+}
+
+.pr-theme--fiesta-street .fs-hours__row:last-child {
+    border-bottom: none;
+}
+
+.pr-theme--fiesta-street .fs-hours__day {
+    font-weight: 700;
+    color: var(--fs-color-text);
+}
+
+.pr-theme--fiesta-street .fs-hours__time {
+    color: var(--fs-color-text-muted);
+    font-variant-numeric: tabular-nums;
+}
+
+.pr-theme--fiesta-street .fs-hours__closed {
+    color: var(--fs-color-magenta);
+    font-weight: 600;
+}
+
+.pr-theme--fiesta-street .fs-hours__note {
+    font-size: 0.78rem;
+    color: var(--fs-color-text-muted);
+    font-style: italic;
+    padding: 0.25rem var(--fs-space-sm);
+    background-color: var(--fs-color-surface);
+}
+
+/* --------------------------------------------------------------------------
+   Contact
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-contact__details {
+    display: flex;
+    flex-direction: column;
+    gap: var(--fs-space-xs);
+    font-size: 0.95rem;
+    color: var(--fs-color-text-muted);
+    background-color: var(--fs-color-surface);
+    border-radius: var(--fs-radius);
+    padding: var(--fs-space-md);
+    border: 1px solid var(--fs-color-border);
+}
+
+.pr-theme--fiesta-street .fs-contact__details a {
+    color: var(--fs-color-orange);
+}
+
+/* --------------------------------------------------------------------------
+   Social links
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-social__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--fs-space-xs);
+    list-style: none;
+}
+
+.pr-theme--fiesta-street .fs-social__link {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #FFFFFF !important;
+    background: linear-gradient(135deg, var(--fs-color-orange), var(--fs-color-magenta));
+    padding: 0.4em 1em;
+    border-radius: 999px;
+    text-decoration: none !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+    transition: opacity 0.15s, transform 0.1s;
+}
+
+.pr-theme--fiesta-street .fs-social__link:hover,
+.pr-theme--fiesta-street .fs-social__link:focus-visible {
+    opacity: 0.88;
+    transform: translateY(-1px);
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.pr-theme--fiesta-street .fs-footer {
+    background: linear-gradient(
+        160deg,
+        var(--fs-color-magenta) 0%,
+        var(--fs-color-orange) 100%
+    );
+    text-align: center;
+    padding: var(--fs-space-md) var(--fs-space-sm);
+}
+
+.pr-theme--fiesta-street .fs-footer__name {
+    font-family: var(--fs-font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #FFFFFF;
+    letter-spacing: 0.02em;
+    margin-bottom: var(--fs-space-xs);
+}
+
+.pr-theme--fiesta-street .fs-footer__emoji {
+    font-size: 1.2rem;
+    letter-spacing: 0.3em;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive — wider screens
+   -------------------------------------------------------------------------- */
+@media (min-width: 480px) {
+    .pr-theme--fiesta-street .fs-hero {
+        max-height: 400px;
+    }
+
+    .pr-theme--fiesta-street .fs-hero__image {
+        height: 400px;
+    }
+
+    .pr-theme--fiesta-street .fs-main {
+        padding: var(--fs-space-xl) var(--fs-space-md);
+    }
+
+    .pr-theme--fiesta-street .pr-menu__item:has(.pr-menu__item-image-wrapper) {
+        grid-template-columns: 1fr 96px;
+    }
+
+    .pr-theme--fiesta-street .pr-menu__item-image {
+        width: 96px;
+        height: 96px;
+    }
+}

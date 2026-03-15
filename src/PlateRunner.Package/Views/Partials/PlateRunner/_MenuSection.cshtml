@@ -1,0 +1,21 @@
+@using PlateRunner.Package.ViewModels
+@model MenuSectionViewModel
+
+<div class="pr-menu__section">
+    <h2 class="pr-menu__section-heading">@Model.Name</h2>
+
+    @if (!string.IsNullOrWhiteSpace(Model.Description))
+    {
+        <p class="pr-menu__section-description">@Model.Description</p>
+    }
+
+    @if (Model.Items is { Count: > 0 })
+    {
+        <ul class="pr-menu__items" role="list">
+            @foreach (var item in Model.Items)
+            {
+                @await Html.PartialAsync("~/Views/Partials/PlateRunner/_MenuItem.cshtml", item)
+            }
+        </ul>
+    }
+</div>

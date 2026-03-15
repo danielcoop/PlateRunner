@@ -1,0 +1,14 @@
+{
+  "id": "PlateRunner.Package",
+  "name": "PlateRunner.Package",
+  "version": "0.0.0",
+  "allowTelemetry": true,
+  "extensions": [
+    {
+      "name": "Plate Runner Package Bundle",
+      "alias": "PlateRunner.Package.Bundle",
+      "type": "bundle",
+      "js": "/App_Plugins/PlateRunnerPackage/plate-runner-package.js"
+    }
+  ]
+}

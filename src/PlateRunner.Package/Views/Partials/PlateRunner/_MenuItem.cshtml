@@ -1,0 +1,50 @@
+@using PlateRunner.Package.ViewModels
+@model MenuItemViewModel
+
+<li class="pr-menu__item@(!Model.IsAvailable ? " pr-menu__item--unavailable" : null)">
+
+    @if (!string.IsNullOrWhiteSpace(Model.ImageUrl))
+    {
+        <div class="pr-menu__item-image-wrapper">
+            <img class="pr-menu__item-image"
+                 src="@Model.ImageUrl"
+                 alt="@Model.Name"
+                 loading="lazy" />
+        </div>
+    }
+
+    <div class="pr-menu__item-body">
+
+        <div class="pr-menu__item-header">
+            <span class="pr-menu__item-name">@Model.Name</span>
+
+            @if (!string.IsNullOrWhiteSpace(Model.FormattedPrice))
+            {
+                <span class="pr-menu__item-price" aria-label="Price: @Model.FormattedPrice">
+                    @Model.FormattedPrice
+                </span>
+            }
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(Model.Description))
+        {
+            <p class="pr-menu__item-description">@Model.Description</p>
+        }
+
+        @if (Model.DietaryTags is { Count: > 0 })
+        {
+            <ul class="pr-menu__item-tags" role="list" aria-label="Dietary information">
+                @foreach (var tag in Model.DietaryTags)
+                {
+                    <li class="pr-menu__item-tag">@tag</li>
+                }
+            </ul>
+        }
+
+        @if (!Model.IsAvailable)
+        {
+            <p class="pr-menu__item-unavailable-notice" role="status">Currently unavailable</p>
+        }
+
+    </div>
+</li>
